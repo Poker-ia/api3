@@ -2,7 +2,6 @@ import os
 from pathlib import Path
 import dj_database_url
 
-BASE_DIR = Path(__file__).resolve().parent.parent
 
 # =======================
 # SECURITY
@@ -12,17 +11,22 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "dev-secret-key-no-usar-en-produccion"
 
 DEBUG = os.environ.get("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "localhost 127.0.0.1").split()
+ALLOWED_HOSTS = [
+    "api3-g4d6.onrender.com",
+    ".onrender.com",
+    "localhost",
+    "127.0.0.1"
+]
 
 # =======================
 # DATABASE
 # =======================
 
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 DATABASES = {
-    'default': dj_database_url.parse(
-        os.environ.get("DATABASE_URL", f"sqlite:///{BASE_DIR / 'db.sqlite3'}"),
-        conn_max_age=600,
-        ssl_require=False
+    'default': dj_database_url.config(
+        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}"
     )
 }
 
