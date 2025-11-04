@@ -12,5 +12,5 @@ class Producto(models.Model):
     modelo = models.CharField(max_length=50)
     precio = models.DecimalField(max_digits=10, decimal_places=2)
     stock = models.IntegerField()
-    imagen = models.ImageField(upload_to='productos/')
-    proveedor_id = models.ForeignKey(Proveedor, on_delete=models.CASCADE)   
+    imagen = models.ImageField(upload_to='productos/', blank=True, null=True)
+    proveedor = models.ForeignKey(Proveedor, on_delete=models.CASCADE, related_name='productos')

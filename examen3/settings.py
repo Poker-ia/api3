@@ -74,6 +74,7 @@ MIDDLEWARE = [
     # WhiteNoise para servir archivos estáticos en Render
     'whitenoise.middleware.WhiteNoiseMiddleware',
     
+    
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -217,3 +218,5 @@ if IS_RENDER:
         # Agrega aquí tu URL de frontend en producción
         # "https://tu-frontend.onrender.com",
     ]
+
+    DEBUG = True
